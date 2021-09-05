@@ -6,8 +6,11 @@ Creates a new 'Results AAUU.txt' file and writes the results inside.
 # Dependencies
 
 Python (Go with the newest!)
+
 Pandas library
+
 Openpyxl library
+
 tkinter library
 
 # Installation & setup
@@ -16,6 +19,7 @@ tkinter library
 2. Use console to install 'pandas' library: pip install pandas
 3. Use console to install 'openpyxl' library: pip install openpyxl
 4. Use console to install 'tkinter' library: pip install tkinter
+
 
 5. Place your 'AAU.xlsx' file and your 'Customers.csv' file inside a same folder.
 6. Run 'AAUU.py'
