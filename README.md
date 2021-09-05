@@ -20,8 +20,6 @@ tkinter library
 3. Use console to install 'openpyxl' library: pip install openpyxl
 4. Use console to install 'tkinter' library: pip install tkinter
 
-
-
 5. Place your 'AAU.xlsx' file and your 'Customers.csv' file inside a same folder.
 6. Run 'AAUU.py'
 7. A new file named 'Results AAUU.txt' will be created inside the folder you chose in step 5.
