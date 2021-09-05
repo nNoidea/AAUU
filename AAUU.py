@@ -14,18 +14,23 @@ Primaire_domeinaam = 2
 
 def main():
     Tk().withdraw()  # use to hide tkinter window
-    Dir = askdirectory(title="Select Folder")  # shows dialog box and return the path.
+    Dir = askdirectory(title="where are the files?")  # shows dialog box and return the path.
     aau_excel = pd.read_excel(f"{Dir}/AAU.xlsx")
     customers_csv = pd.read_excel(f"{Dir}/customers.xlsx")
 
     LENGTE_AAU = len(aau_excel)
     LENGTE_PARTNER = len(customers_csv)
 
-
     print("...")
     pos_array = pos_comparer(LENGTE_AAU, LENGTE_PARTNER, aau_excel, customers_csv)
     neg_array = neg_comparer(LENGTE_AAU, LENGTE_PARTNER, aau_excel, customers_csv)
-    print(pos_array)
+
+    results = open(f"{Dir}/Results AAUU.txt","w")
+    results.write("In lijst:")
+    for line in pos_array:
+        results.write(f"{line}\n")
+    
+
 
 
 def pos_comparer(LENGTE_AAU, LENGTE_PARTNER, aau_excel, customers_csv):
@@ -47,7 +52,6 @@ def pos_comparer(LENGTE_AAU, LENGTE_PARTNER, aau_excel, customers_csv):
 
 def neg_comparer(LENGTE_AAU, LENGTE_PARTNER, aau_excel, customers_csv):
     neg_array = []
-
 
     return neg_array
 
