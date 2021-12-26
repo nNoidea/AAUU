@@ -1,5 +1,6 @@
+from contextlib import nullcontext
 import pandas as pandas
-from tkinter import *
+from tkinter import Tk
 from tkinter.filedialog import askdirectory
 import glob
 import os
@@ -35,9 +36,11 @@ def main():
         pos_array = pos_comparer(LENGTE_AAU, LENGTE_PARTNER, aau_excel, customers_csv)
     elif mode == 3:
         pos_array = func_autopilot(LENGTE_AUTOPILOT, LENGTE_PARTNER, autopilot, customers_csv)
+    else:
+        print("you have to select between teh 3 modes, closing...")
+        return
 
     writer(Dir, pos_array)
-
 
 def writer(Dir, pos_array):
 
@@ -76,7 +79,7 @@ def files(Dir):
         customers_file_name.sort(key=lambda x: os.path.getmtime(x), reverse=True)
         customers_file_first = customers_file_name[0]  # convert from array to a string
         customers_csv = pandas.read_csv(customers_file_first)
-        customers_csv.to_excel(f"{Dir}customers.xlsx", index=None, header=True)
+        customers_csv.to_excel(f"{Dir}customers.xlsx", index=False, header=True)
     except:
         try:
             customers_file_name = glob.glob(Dir + "*customers*.xlsx")
@@ -86,10 +89,7 @@ def files(Dir):
             customers_csv = pandas.read_excel(customers_file_first)
         except PermissionError:
             print("Close the required files that are open and try again.")
-            input("press enter to close")
-
-    
-
+            return input("press enter to close")
 
     return aau_excel, customers_csv, autopilot
 
